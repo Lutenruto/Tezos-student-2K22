@@ -16,7 +16,9 @@ help:
 compile:
 	@echo "Compiling contract..."
 	@$(call compile,main.mligo,main.tz)
+	@echo "Compiling contract... Done"
 
 clean:
 	@echo "Cleaning..."
 	@rm -rf ./src/compiled/*
+	@echo "Cleaning... Done"
