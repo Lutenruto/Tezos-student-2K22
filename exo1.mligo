@@ -1,6 +1,5 @@
 // Permet d'ajouter des user dans une map, equivalent d'une BDD d'user
 
-type return = operation list * storage
 type index = nat
 type user = string
 
@@ -14,6 +13,8 @@ type storage = {
 type parameter =
   AddUser of string
 | Reset of unit
+
+type return = operation list * storage
 
 let add_user (user, store : string * storage) : storage =
     let returned_user_map : mapping = Map.add store.last_index user store.user_map in
