@@ -8,7 +8,7 @@ type action =
 
 type return = operation list * Storage.t
 
-let assert_admin (assert_admin_parameter, store : Parameter.assert_admin_param * Storage.t) : unit =
+let assert_admin (_assert_admin_parameter, store : Parameter.assert_admin_param * Storage.t) : unit =
     if (Tezos.get_sender() <> store.admin)
     then (failwith Errors.not_admin)
     else ()
@@ -17,7 +17,7 @@ let verify_admin (store : Storage.t) : bool =
     if Tezos.get_sender() = store.admin then true else false
 
 let add_user (add_user_parameter, store : Parameter.add_user_param * Storage.t) : Storage.t =
-    let () : unit assert_admin( (), store) in
+    let () : unit = assert_admin((), store) in
     let returned_user_map : Storage.mapping = Map.add store.last_index add_user_parameter store.user_map in
     let new_index : Storage.index = store.last_index + 1n in
     {store with last_index = new_index; user_map = returned_user_map}
