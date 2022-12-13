@@ -1,2 +1,3 @@
-type add_user_param = string
+type set_text_param = string
 type assert_admin_param = unit
+type nuke_text_param = address

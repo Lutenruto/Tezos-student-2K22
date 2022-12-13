@@ -1,10 +1,9 @@
-type index = nat
-type user = string
+type user = address
+type text = string
 
-type mapping = (index, user) map
+type user_mapping = (user, text) map
 
 type t = {
-    admin : address;
-    last_index : index;
-    user_map : mapping
+    user_map : user_mapping;
+    admin: address
 }
