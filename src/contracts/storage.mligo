@@ -1,9 +1,13 @@
 type user = address
-type text = string
+type value = string
 
-type user_mapping = (user, text) map
+type tier = Platinum | Gold | Silver | Bronze | Moldu
+
+type mapping = (user, value) map
+type blacklist = user list
 
 type t = {
-    user_map : user_mapping;
-    admin: address
+    admin: address;
+    user_map : mapping;
+    user_blacklist : blacklist
 }
