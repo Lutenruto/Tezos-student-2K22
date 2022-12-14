@@ -15,7 +15,8 @@ let test_successful_increment =
     let (_, taddr, contr) = Bootstrap.originate_contract(Bootstrap.base_storage) in
     let () = Test.set_source(accounts.0) in
     let () = assert(Bootstrap.base_storage = Helper.get_storage(taddr)) in
-    let _ = Helper.call_increment(3, contr) in
+    let result = Helper.call_increment(3, contr) in
+    let () = Test.println(Test.to_string(result)) in
     let modified_store = Helper.get_storage(taddr) in
     let () = Test.println(Test.to_string(modified_store)) in
     assert(modified_store = Bootstrap.base_storage + 3)
