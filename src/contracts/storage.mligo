@@ -3,7 +3,7 @@ type value = string
 
 type tier = Platinum | Gold | Silver | Bronze | Moldu
 
-type mapping = (user, value) map
+type mapping = (user, (value * tier)) map
 type blacklist = user list
 
 type t = {
