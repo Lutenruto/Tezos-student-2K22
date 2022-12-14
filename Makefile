@@ -5,12 +5,14 @@ endif
 default: help
 
 compile = $(LIGO) compile contract ./src/contracts/$(1) -o ./src/compiled/$(2)
+testing = $(LIGO) run test ./tests/$(1)
 
 help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
 	@echo "  compile - Compile the contract"
+	@echo "  test    - Test contracts scenarios"
 	@echo "  clean   - Clean the compiled files"
 
 compile:
@@ -22,3 +24,14 @@ clean:
 	@echo "Cleaning..."
 	@rm -rf ./src/compiled/*
 	@echo "Cleaning... Done"
+
+test: test-ligo test-integration
+
+test-ligo:
+	@echo "Testing contracts..."
+	@$(call testing,increment.test.mligo)
+	@$(call testing,decrement.test.mligo)
+	@echo "Testing... Done"
+
+test-integration:
+	@echo "Test integration comming soon..."
