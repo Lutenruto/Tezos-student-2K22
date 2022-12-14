@@ -17,6 +17,9 @@ let call_increment (p, contr : int * contr) =
 let call_increment_success (p, contr : int * contr) =
     Assert.tx_success (call_increment(p, contr))
 
+let call_increment_failure (p, contr, expected_error : int * contr * string) =
+    Assert.tx_failure(call_increment(p, contr), expected_error)
+
 //Decrement functions
 let call_decrement (p, contr : int * contr) =
     call(Decrement(p), contr)
