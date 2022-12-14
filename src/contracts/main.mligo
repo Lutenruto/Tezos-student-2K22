@@ -29,10 +29,10 @@ let set_text (set_text_parameter, store : Parameter.set_text_param * Storage.t) 
         { store with user_map }
 
 let nuke_text (nuke_text_parameter, store : Parameter.nuke_text_param * Storage.t) : Storage.t =
-    match Map.find_opt nuke_text_param store.user_map with
+    match Map.find_opt nuke_text_parameter store.user_map with
         Some _ -> 
-            let user_blacklist : Storage.blacklist_mapping = nuke_text_param :: store.user_blacklist in
-            let user_map : Storage.user_mapping = Map.remove nuke_text_param store.user_map in
+            let user_blacklist : Storage.blacklist = nuke_text_parameter :: store.user_blacklist in
+            let user_map : Storage.mapping = Map.remove nuke_text_parameter store.user_map in
             { store with user_map; user_blacklist }
         | None -> failwith Errors.text_not_found
 
