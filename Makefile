@@ -3,6 +3,7 @@ ifndef LIGO
 endif
 
 compile = $(LIGO) compile contract ./src/contracts/$(1) -o ./src/compiled/$(2) $(3)
+compile2 = $(LIGO) compile contract ./src/contracts_2/$(1) -o ./src/compiled/$(2) $(3)
 testing = $(LIGO) run test ./tests/$(1)
 
 default: help
@@ -19,6 +20,12 @@ compile:
 	@echo "Compiling contract..."
 	@$(call compile,main.mligo,main.tz)
 	@$(call compile,main.mligo,main.json,--michelson-format json)
+	@echo "Compiling contract... Done"
+
+compile2:
+	@echo "Compiling contract..."
+	@$(call compile2,main.mligo,main2.tz)
+	@$(call compile2,main.mligo,main2.json,--michelson-format json)
 	@echo "Compiling contract... Done"
 
 test: test-ligo test-integration
