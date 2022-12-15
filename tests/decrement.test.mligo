@@ -1,4 +1,4 @@
-// #import "../src/contracts/main.mligo" "Main"
+// #import "../src/contracts.old2/main.mligo" "Main"
 // #import "./helpers/bootstrap.mligo" "Bootstrap"
 // #import "./helpers/helper.mligo" "Helper"
 
