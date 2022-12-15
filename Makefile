@@ -2,10 +2,10 @@ ifndef LIGO
 	LIGO = docker run --rm -v "${PWD}":"${PWD}" -w "${PWD}" ligolang/ligo:0.57.0
 endif
 
-default: help
-
-compile = $(LIGO) compile contract ./src/contracts/$(1) -o ./src/compiled/$(2)
+compile = $(LIGO) compile contract ./src/contracts/$(1) -o ./src/compiled/$(2) $(3)
 testing = $(LIGO) run test ./tests/$(1)
+
+default: help
 
 help:
 	@echo "Usage: make [target]"
@@ -18,12 +18,8 @@ help:
 compile:
 	@echo "Compiling contract..."
 	@$(call compile,main.mligo,main.tz)
+	@$(call compile,main.mligo,main.json,--michelson-format json)
 	@echo "Compiling contract... Done"
-
-clean:
-	@echo "Cleaning..."
-	@rm -rf ./src/compiled/*
-	@echo "Cleaning... Done"
 
 test: test-ligo test-integration
 
@@ -35,3 +31,19 @@ test-ligo:
 
 test-integration:
 	@echo "Test integration comming soon..."
+
+deploy-contract:
+	@echo "Deploying Main contract..."
+	@npm run deploy
+	@echo "Deploying... Done"
+
+clean:
+	@echo "Cleaning..."
+	@rm -rf ./src/compiled/*
+	@echo "Cleaning... Done"
+
+sandbox-start:
+	@./scripts/run-sandbox.sh
+
+sandbox-stop:
+	@docker stop sandbox
