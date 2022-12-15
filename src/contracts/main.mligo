@@ -79,10 +79,10 @@ let main (action, store : action * Storage.t) : operation list * Storage.t =
     let new_store : Storage.t = match action with
                             | SetText (p) -> 
                                 let _ = pay_contract_fees((), store) in
-                                let temp_map : Storage.string_register = 
-                                    Map.literal [(Tezos.get_sender(), p)]
-                                    in
-                                let () = set_string_register(temp_map, set_text (p, store)) in
+                                // let temp_map : Storage.string_register = 
+                                //     Map.literal [(Tezos.get_sender(), p)]
+                                //     in
+                                //let () = set_string_register(temp_map, set_text (p, store)) in
                                 set_rank (p, store)
                             | SetAdmin (p) -> 
                                 let () : unit = assert_admin ( (), store) in
