@@ -1,0 +1,6 @@
+let not_admin = "You are not an admin"
+let blacklisted = "You are blacklisted"
+let no_entry = "Sorry, this user no exists"
+let text_not_found = "Sorry, this text no exists"
+let fees_already_paid = "You have already paid the fees"
+let wrong_fees_amount = "Wrong fees amount"
